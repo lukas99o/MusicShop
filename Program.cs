@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using MusicShop.Data;
+
 namespace MusicShop
 {
     public class Program
@@ -7,7 +10,8 @@ namespace MusicShop
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            var connectionstring = builder.Configuration.GetConnectionString("MusicDb");
+            builder.Services.AddDbContext<MusicDbContext>(x=>x.UseSqlServer(connectionstring)); 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
