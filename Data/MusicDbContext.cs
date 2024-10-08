@@ -8,6 +8,7 @@ namespace MusicShop.Data
 
         public DbSet<Products> Products { get; set; }
         public DbSet<Categorey> Categoreys { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public MusicDbContext(DbContextOptions<MusicDbContext> options) :base(options)
         {
