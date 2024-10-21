@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Data;
+using MusicShop.Repository;
+using MusicShop.Repository.IRepository;
+using MusicShop.Services;
+using MusicShop.Services.IServices;
 
 namespace MusicShop
 {
@@ -16,6 +20,8 @@ namespace MusicShop
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 
