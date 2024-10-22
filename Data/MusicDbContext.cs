@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MusicShop.Models;
 
 namespace MusicShop.Data
 {
-    public class MusicDbContext:DbContext
+    public class MusicDbContext : IdentityDbContext<User>
     {
 
         public DbSet<Products> Products { get; set; }

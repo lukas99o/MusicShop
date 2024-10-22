@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MusicShop.Data;
+using MusicShop.Models;
 using MusicShop.Repository;
 using MusicShop.Repository.IRepository;
 using MusicShop.Services;
@@ -22,6 +24,9 @@ namespace MusicShop
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<MusicDbContext>()
+                .AddDefaultTokenProviders();
 
             var app = builder.Build();
 
